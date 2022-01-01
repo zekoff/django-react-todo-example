@@ -1,6 +1,6 @@
 tasks:
   - before: |
-      pip install django djangorestframework django-cors-headers
+      pip install -r backend/requirements.txt
       echo $(pwd)
     init: |
       echo 'TODO: build project'
