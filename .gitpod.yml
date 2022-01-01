@@ -1,7 +1,9 @@
 tasks:
   - before: |
       pip install django djangorestframework django-cors-headers
+      echo $(pwd)
     init: |
       echo 'TODO: build project'
     command: |
       echo 'TODO: start app'
+      echo $(pwd)
