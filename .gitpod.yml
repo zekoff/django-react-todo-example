@@ -15,8 +15,6 @@ tasks:
     command: |
       python backend/manage.py createsuperuser --no-input
       python backend/manage.py runserver
-  - init: npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps
-    command: |
-      cd frontend
-      npm start
+  - init: (cd frontend ; npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps)
+    command: (cd frontend ; npm start)
     openMode: split-right
