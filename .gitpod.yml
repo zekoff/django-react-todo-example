@@ -10,11 +10,12 @@ tasks:
   - before: |
       pip install -r backend/requirements.txt
     init: |
-      npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps
       python backend/manage.py migrate
     command: |
       python backend/manage.py createsuperuser --no-input
       python backend/manage.py runserver
+    openMode: split-right
   - init: (cd frontend ; npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps)
     command: (cd frontend ; npm start)
     openMode: split-right
+    name: Frontend Server
