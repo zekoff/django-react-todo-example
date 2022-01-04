@@ -9,7 +9,7 @@ tasks:
       echo $(pwd)
     init: |
       python backend/manage.py migrate
-      python backend/superuser_create.py
+      python backend/manage.py createsuperuser --noinput
     command: |
       echo $(pwd)
       python backend/manage.py runserver
