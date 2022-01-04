@@ -9,7 +9,7 @@ tasks:
       echo $(pwd)
     init: |
       python backend/manage.py migrate
-      python backend/manage.py createsuperuser --noinput
+      python backend/manage.py createsuperuser --noinput --username zekoff --email zekoff@gmail.com
     command: |
       echo $(pwd)
       python backend/manage.py runserver
