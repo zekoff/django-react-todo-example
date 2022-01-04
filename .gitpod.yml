@@ -1,9 +1,15 @@
+ports:
+  - port: 8000
+    visibility: public
+    onOpen: open-preview
+
 tasks:
   - before: |
       pip install -r backend/requirements.txt
       echo $(pwd)
     init: |
       python backend/manage.py migrate
+      python backend/superuser_create.py
     command: |
       echo $(pwd)
       python backend/manage.py runserver
