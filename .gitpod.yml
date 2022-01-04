@@ -5,12 +5,19 @@ ports:
 
 tasks:
   - before: |
+      echo 'Beginning before stage'
       pip install -r backend/requirements.txt
       echo $(pwd)
     init: |
+      echo 'Beginning init stage'
       python backend/manage.py migrate
+      echo 'Showing env vars'
       echo $DJANGO_SUPERUSER_USERNAME
+      echo 'Not showing password...'
+      echo $DJANGO_SUPERUSER_EMAIL
+      echo 'Running custom superuser create script'
       cat backend/create_superuser.py | python backend/manage.py shell
     command: |
+      echo 'Beginning command stage'
       echo $(pwd)
       python backend/manage.py runserver
