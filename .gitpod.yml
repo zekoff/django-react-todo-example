@@ -3,7 +3,7 @@ tasks:
       pip install -r backend/requirements.txt
       echo $(pwd)
     init: |
-      echo 'TODO: build project'
+      python backend/manage.py migrate
     command: |
-      echo 'TODO: start app'
       echo $(pwd)
+      python backend/manage.py runserver
