@@ -1,3 +1,3 @@
 from django.core import management
 
-management.call_command('createsuperuser', '--noinput')
+management.call_command('createsuperuser', interactive=False)
