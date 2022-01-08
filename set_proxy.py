@@ -16,4 +16,4 @@ print(proxy)
 package_contents['proxy'] = proxy
 
 with open(PKG_FILENAME, 'w', encoding='utf-8') as package_file:
-    json.dump(package_contents, package_file, indent=4)
+    json.dump(package_contents, package_file, indent=2)
