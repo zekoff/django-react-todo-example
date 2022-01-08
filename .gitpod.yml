@@ -1,8 +1,6 @@
 ports:
   - port: 8000
-    visibility: public
   - port: 3000
-    visibility: public
     onOpen: open-preview
 
 tasks:
@@ -13,8 +11,11 @@ tasks:
     command: |
       python backend/manage.py createsuperuser --no-input
       python backend/manage.py runserver
+    name: Backend Server
     openMode: split-right
-  - init: (cd frontend ; npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps)
-    command: (cd frontend ; npm start)
+  - init: (cd frontend ; npm install axios@0.21.1 bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps)
+    command: |
+      python set_proxy.py
+      (cd frontend ; npm start)
     openMode: split-right
     name: Frontend Server
