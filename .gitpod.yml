@@ -15,7 +15,7 @@ tasks:
       python backend/manage.py runserver
     name: Backend Server
     openMode: split-right
-  - init: (cd frontend ; npm install axios@0.21.1 bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps)
+  - init: (cd frontend ; npm install)
     command: |
       python set_proxy.py
       (cd frontend ; npm start)
