@@ -2,33 +2,6 @@ import React, {Component} from "react";
 import Modal from "./components/Modal"
 import axios from "axios";
 
-const todoItems = [
-  {
-    id: 1,
-    title: "My First Task",
-    description: "Do some things",
-    completed: true,
-  },
-  {
-    id: 2,
-    title: "Another Important Task",
-    description: "Make good decisions and do the right thing",
-    completed: false,
-  },
-  {
-    id: 3,
-    title: "Understand DRF",
-    description: "Look into DRF documentation for use cases",
-    completed: false,
-  },
-  {
-    id: 4,
-    title: "Relax",
-    description: "Play a video game",
-    completed: true,
-  }
-];
-
 class App extends Component {
   constructor(props) {
     super(props);

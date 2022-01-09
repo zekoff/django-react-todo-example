@@ -2,14 +2,8 @@ import React, {Component} from "react";
 import {
     Button,
     Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    Form,
-    FormGroup,
-    Input,
-    Label,
-} from "reactstrap";
+    TextField,
+} from "@mui/material";
 
 export default class CustomModal extends Component {
     constructor(props) {
@@ -32,11 +26,11 @@ export default class CustomModal extends Component {
         const {toggle, onSave} = this.props;
         return (
             <Modal isOpen={true} toggle={toggle}>
-                <ModalHeader toggle={toggle}>Todo Item</ModalHeader>
-                <ModalBody>
-                    <Form>
-                        <FormGroup>
-                            <Label for="todo-title">Title</Label>
+                <h1 toggle={toggle}>Todo Item</h1>
+                <p>
+                    <div>
+                        <div>
+                            <p for="todo-title">Title</p>
                             <Input 
                                 type="text"
                                 id="todo-title"
@@ -45,10 +39,10 @@ export default class CustomModal extends Component {
                                 onChange={this.handleChange}
                                 placeholder="Enter Todo Title"
                             />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="todo-description">Description</Label>
-                            <Input 
+                        </div>
+                        <div>
+                            <p for="todo-description">Description</p>
+                            <TextField 
                                 type="text"
                                 id="todo-description"
                                 name="description"
@@ -56,28 +50,28 @@ export default class CustomModal extends Component {
                                 onChange={this.handleChange}
                                 placeholder="Enter Todo description"
                             />
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                                <Input
+                        </div>
+                        <div check>
+                            <p check>
+                                <TextField
                                     type="checkbox"
                                     name="completed"
                                     checked={this.state.activeItem.completed}
                                     onChange={this.handleChange}
                                 />
                                 Completed
-                            </Label>
-                        </FormGroup>
-                    </Form>
-                </ModalBody>
-                <ModalFooter>
+                            </p>
+                        </div>
+                    </div>
+                </p>
+                <p>
                     <Button
                         color="success"
                         onClick={()=>onSave(this.state.activeItem)}
                     >
                         Save
                     </Button>
-                </ModalFooter>
+                </p>
             </Modal>
         );
     }
