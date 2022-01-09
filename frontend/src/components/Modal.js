@@ -31,7 +31,7 @@ export default class CustomModal extends Component {
                     <div>
                         <div>
                             <p for="todo-title">Title</p>
-                            <Input 
+                            <TextField 
                                 type="text"
                                 id="todo-title"
                                 name="title"
