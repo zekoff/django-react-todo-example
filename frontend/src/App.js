@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
-import { Stack, CssBaseline } from "@mui/material";
+import { Stack, Fab, Box } from "@mui/material";
 import TodoItem from "./components/TodoItem"
+import NavigationIcon from "@mui/icons-material/Navigation";
 
 class App extends Component {
   constructor(props) {
@@ -60,24 +61,35 @@ class App extends Component {
     this.setState({activeItem:item, modal:!this.state.modal});
   };
 
-  getTodoItems = (num) => {
+  getTodoItems = () => {
     let returnedItems = [];
-    for (let i = 0; i < num; i++) {
-      returnedItems.push(<TodoItem key={`todo-item-${i}`}></TodoItem>)
+    for (let i = 0; i < this.state.todoList.length; i++) {
+      const item = this.state.todoList[i];
+      returnedItems.push(
+        <TodoItem
+          key={`todo-item-${i}`}
+          completed={item.completed}
+          title={item.title}
+          description={item.description}
+        />
+      )
     }
     return returnedItems;
   }
 
   render() {
     return (
-      <>
-        <CssBaseline />
+      <Box>
         <Stack spacing={2}>
           {
-            this.getTodoItems(4)
+            this.getTodoItems()
           }
         </Stack>
-      </>
+        <Fab variant="extended" onClick={this.refreshList}>
+          <NavigationIcon />
+          Refresh List
+        </Fab>
+      </Box>
     )
   }
 }
