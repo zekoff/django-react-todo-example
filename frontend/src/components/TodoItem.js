@@ -11,34 +11,38 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import CheckBoxOutlineBlankOutlined from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 
 export default class TodoItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
+        const { item } = this.props;
         return (
-            <Paper>
+            <Paper elevation={4}>
                 <Grid container spacing={2}>
                     <Grid item md={1}>
-                        <ToggleButton>
+                        <ToggleButton value={item.completed}>
                             {
-                                this.props.completed ?
+                                item.completed ?
                                 <CheckBoxOutlinedIcon /> :
                                 <CheckBoxOutlineBlankOutlined />
                             }
                         </ToggleButton>
                     </Grid>
                     <Grid item md={9}>
-                        <Typography variant="h2">{this.props.title}</Typography>
+                        <Typography variant="h2">{item.title}</Typography>
                     </Grid>
                     <Grid item md={2}>
-                        <Button variant="contained"><DeleteIcon /></Button>
+                        <Button
+                            variant="contained"
+                            onClick={()=>{this.props.deleteFunction(item.id);}}
+                        >
+                            <DeleteIcon />
+                        </Button>
                     </Grid>
                     <Grid item md={12}>
-                        <Typography variant="body1">{this.props.description}</Typography>
+                        <Typography variant="body1">{item.description}</Typography>
                     </Grid>
                 </Grid>
             </Paper>
         );
     }
+
 }

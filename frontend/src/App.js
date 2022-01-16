@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import { Stack, Fab, Box } from "@mui/material";
+import { Stack, Fab, Container } from "@mui/material";
 import TodoItem from "./components/TodoItem"
 import NavigationIcon from "@mui/icons-material/Navigation";
 
@@ -8,13 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewCompleted: false,
       todoList: [],
-      activeItem: {
-        title: "",
-        description: "",
-        completed: false,
-      },
     };
   }
 
@@ -46,9 +40,9 @@ class App extends Component {
       .then((res)=>this.refreshList());
   };
 
-  handleDelete = (item) => {
+  handleDelete = (id) => {
     axios
-      .delete(`/api/todos/${item.id}/`)
+      .delete(`/api/todos/${id}/`)
       .then((res)=>this.refreshList());
   };
 
@@ -67,10 +61,9 @@ class App extends Component {
       const item = this.state.todoList[i];
       returnedItems.push(
         <TodoItem
-          key={`todo-item-${i}`}
-          completed={item.completed}
-          title={item.title}
-          description={item.description}
+          key={`todo-item-${item.id}`}
+          item={item}
+          deleteFunction={this.handleDelete}
         />
       )
     }
@@ -79,17 +72,17 @@ class App extends Component {
 
   render() {
     return (
-      <Box>
-        <Stack spacing={2}>
+      <Container>
+        <Stack spacing={3}>
           {
             this.getTodoItems()
           }
+          <Fab variant="extended" onClick={this.refreshList}>
+            <NavigationIcon />
+            Refresh List
+          </Fab>
         </Stack>
-        <Fab variant="extended" onClick={this.refreshList}>
-          <NavigationIcon />
-          Refresh List
-        </Fab>
-      </Box>
+      </Container>
     )
   }
 }
