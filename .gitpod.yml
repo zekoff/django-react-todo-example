@@ -21,3 +21,7 @@ tasks:
       (cd frontend ; npm start)
     openMode: split-right
     name: Frontend Server
+
+github:
+  prebuilds:
+    branches: true
