@@ -9,7 +9,7 @@ tasks:
       pip install -r backend/requirements.txt
     init: |
       python backend/manage.py migrate
-      python backend/manage.py loaddata starter-data.json
+      (cd backend ; python manage.py loaddata starter-data.json)
     command: |
       python backend/manage.py createsuperuser --no-input
       python backend/manage.py runserver
