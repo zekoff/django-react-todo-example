@@ -1,0 +1,29 @@
+[
+    {
+        "model": "todo.todo",
+        "pk": 10,
+        "fields": {
+            "title": "Unfinished Item",
+            "description": "Something I haven't done yet that includes a description.",
+            "completed": false
+        }
+    },
+    {
+        "model": "todo.todo",
+        "pk": 11,
+        "fields": {
+            "title": "Quick to-do item",
+            "description": "",
+            "completed": false
+        }
+    },
+    {
+        "model": "todo.todo",
+        "pk": 12,
+        "fields": {
+            "title": "Already did this one",
+            "description": "Here's a task I've already completed.",
+            "completed": true
+        }
+    }
+]
