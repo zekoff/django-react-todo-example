@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://8000-zekoff-djangoreacttodo-mp0yutogfmo.ws-us27.gitpod.io",
+  "proxy": "https://8000-zekoff-djangoreacttodo-4gns2gof7z7.ws-us27.gitpod.io",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import { Stack, Fab, Container } from "@mui/material";
+import { Stack, Fab, Container, Divider } from "@mui/material";
 import TodoItem from "./components/TodoItem"
 import NavigationIcon from "@mui/icons-material/Navigation";
 
@@ -28,7 +28,6 @@ class App extends Component {
   };
 
   handleSubmit = (item) => {
-    this.toggle();
     if (item.id) {
       axios
         .put(`/api/todos/${item.id}/`, item)
@@ -57,16 +56,24 @@ class App extends Component {
 
   getTodoItems = () => {
     let returnedItems = [];
+    const notCompleted = [];
+    const completed = [];
     for (let i = 0; i < this.state.todoList.length; i++) {
       const item = this.state.todoList[i];
-      returnedItems.push(
-        <TodoItem
-          key={`todo-item-${item.id}`}
-          item={item}
-          deleteFunction={this.handleDelete}
-        />
-      )
+      const newElement = <TodoItem
+        key={`todo-item-${item.id}`}
+        item={item}
+        deleteFunction={this.handleDelete}
+        submitFunction={this.handleSubmit}
+      />
+      if (item.completed)
+        completed.push(newElement);
+      else
+        notCompleted.push(newElement);
     }
+    returnedItems.push(notCompleted);
+    returnedItems.push(<Divider key="divider" />);
+    returnedItems.push(completed);
     return returnedItems;
   }
 

@@ -18,7 +18,14 @@ export default class TodoItem extends React.Component {
             <Paper elevation={4}>
                 <Grid container spacing={2}>
                     <Grid item md={1}>
-                        <ToggleButton value={item.completed}>
+                        <ToggleButton
+                            value={item.completed}
+                            onChange={()=>{
+                                let newItem = { ...item };
+                                newItem.completed = !newItem.completed;
+                                this.props.submitFunction(newItem)
+                            }}
+                        >
                             {
                                 item.completed ?
                                 <CheckBoxOutlinedIcon /> :
